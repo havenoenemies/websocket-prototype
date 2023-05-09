@@ -23,6 +23,10 @@ services:
         restart: unless-stopped
         user: ${UID}:${GID}
         container_name: websocket-app
+        ports:
+            - "6001:6001"
+        expose:
+            - "6001"
         volumes:
             - ./:/var/www
             - ./docker/php/extend-php.ini:/user/local/etc/php/conf.d/extend-php.ini
