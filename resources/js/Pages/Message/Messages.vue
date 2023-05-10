@@ -41,6 +41,8 @@
 </template>
 
 <script>
+
+
 export default {
     name: "Messages",
 
@@ -54,6 +56,13 @@ export default {
         return {
             body: ''
         }
+    },
+
+    created() {
+      window.Echo.channel('store_message')
+      .listen('.store_message', res => {
+          this.messages.unshift(res.message)
+      })
     },
 
     methods: {
