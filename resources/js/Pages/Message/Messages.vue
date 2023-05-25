@@ -17,7 +17,7 @@
                     <div class="text-right">
                         <button
                             @click.prevent="store"
-                            class="bg-sky-400 hover:bg-sky-500 text-white py-2 px-4 rounded-lg"
+                            class="bg-blue-600 hover:bg-sky-500 text-white py-2 px-4 rounded-lg"
                             type="submit"
                         >
                             Send
@@ -32,8 +32,16 @@
 
             <div>
                 <div class="text-sm pb-4 mb-2 border-b border-gray-300" v-for="message in messages">
-                    <p>                   {{ message.body }}</p>
-                    <p class="text-right">{{ message.time }}</p>
+                    <p
+                        class="text-right"
+                        v-if="message.user_id === this.$page.props.auth.user.id"
+                    >
+                        {{ message.body }}
+                    </p>
+                    <p v-else>
+                        {{ message.body }}
+                    </p>
+                    <p class="text-right text-gray-400">{{ message.time }}</p>
                 </div>
             </div>
         </div>
@@ -54,7 +62,7 @@ export default {
 
     data() {
         return {
-            body: ''
+            body: '',
         }
     },
 
@@ -67,7 +75,7 @@ export default {
 
     methods: {
         store() {
-            axios.post('/messages', {body: this.body})
+            axios.post('/messages', {body: this.body, user_id: this.$page.props.auth.user.id})
             .then(res => {
                 this.messages.unshift(res.data)
                 this.body = ''
