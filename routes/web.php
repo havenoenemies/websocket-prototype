@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Auth\MessageController;
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
