@@ -35,15 +35,28 @@
 
                         <div>
                             <div class="text-sm pb-4 mb-2 border-b border-gray-300" v-for="message in messages">
-                                <p
-                                    class="text-right"
-                                    v-if="message.user_id === this.$page.props.auth.user.id"
-                                >
-                                    {{ message.body }}
-                                </p>
-                                <p v-else>
-                                    {{ message.body }}
-                                </p>
+                                <div class="text-right" v-if="message.user_id === this.$page.props.auth.user.id">
+                                    <div class="flex flex-row-reverse space-x-2 space-x-reverse">
+                                        <div>
+                                            <button class="w-12 h-12 rounded-full bg-gray-400"></button>
+                                        </div>
+                                        <div class="font-medium pt-2">
+                                            {{ message.body }}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div v-else>
+                                    <div class="flex space-x-2">
+                                        <div>
+                                            <button class="w-12 h-12 rounded-full bg-gray-400"></button>
+                                        </div>
+                                        <div class="font-medium pt-2">
+                                            {{ message.body }}
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <p class="text-right text-gray-400">{{ message.time }}</p>
                             </div>
                         </div>
