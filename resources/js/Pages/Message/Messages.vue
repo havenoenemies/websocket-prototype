@@ -30,36 +30,13 @@
                         </div>
                     </div>
 
-                    <div v-if="messages.length > 0" class="mb-4">
+                    <div
+                        v-if="messages.length > 0"
+                        class="mb-4"
+                    >
                         <h1 class="text-center mb-4">Messages</h1>
 
-                        <div>
-                            <div class="text-sm pb-4 mb-2 border-b border-gray-300" v-for="message in messages">
-                                <div class="text-right" v-if="message.user_id === this.$page.props.auth.user.id">
-                                    <div class="flex flex-row-reverse space-x-2 space-x-reverse">
-                                        <div>
-                                            <button class="w-12 h-12 rounded-full bg-gray-400"></button>
-                                        </div>
-                                        <div class="font-medium pt-2">
-                                            {{ message.body }}
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div v-else>
-                                    <div class="flex space-x-2">
-                                        <div>
-                                            <button class="w-12 h-12 rounded-full bg-gray-400"></button>
-                                        </div>
-                                        <div class="font-medium pt-2">
-                                            {{ message.body }}
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <p class="text-right text-gray-400">{{ message.time }}</p>
-                            </div>
-                        </div>
+                        <MessageList :messages="messages" />
                     </div>
                 </div>
             </div>
@@ -72,10 +49,11 @@
 <script>
 
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
+import MessageList from "@/Components/Message/MessageList.vue";
 
 export default {
     name: "Messages",
-    components: {AuthenticatedLayout},
+    components: {MessageList, AuthenticatedLayout},
 
     props: {
         messages: {
