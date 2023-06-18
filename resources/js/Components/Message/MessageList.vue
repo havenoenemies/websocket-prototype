@@ -1,22 +1,21 @@
 <template>
-    <div>
-        <div
-            class="text-sm pb-4 mb-2 border-b border-gray-300"
-            v-for="message in messages"
-        >
-            <MessageItem
-                :message="message"
-            />
-        </div>
-    </div>
+    <h1 class="text-center mb-4">Messages</h1>
+
+    <MessageListItem
+        v-for="message in messages"
+        :key="message.id"
+        :body="message.body"
+        :time="message.time"
+        :user="message.user_id"
+    />
 </template>
 
 <script>
-import MessageItem from "@/Components/Message/MessageItem.vue";
+import MessageListItem from "@/Components/Message/MessageListItem.vue";
 
 export default {
     name: "MessageList",
-    components: {MessageItem},
+    components: {MessageListItem},
 
     props: {
         messages: {
