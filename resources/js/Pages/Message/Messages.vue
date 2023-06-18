@@ -30,20 +30,13 @@
                         </div>
                     </div>
 
-                    <div
-                        v-if="messages.length > 0"
-                        class="mb-4"
-                    >
-                        <h1 class="text-center mb-4">Messages</h1>
-
+                    <div v-if="messages.length > 0" class="mb-4">
                         <MessageList :messages="messages" />
                     </div>
                 </div>
             </div>
         </div>
-
     </AuthenticatedLayout>
-
 </template>
 
 <script>
