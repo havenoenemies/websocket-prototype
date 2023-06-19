@@ -5,29 +5,27 @@
                 <div class="w-1/2 mx-auto py-6">
                     <h1 class="mb-4 text-center">Enter your message</h1>
 
-                    <div>
-                        <div class="mb-12">
-                            <form>
-                                <div>
-                                    <input
-                                        v-model="body"
-                                        type="text"
-                                        class="mb-2 w-full rounded-lg border border-gray-400"
-                                        placeholder="Message..."
-                                    >
-                                </div>
+                    <div class="mb-12">
+                        <form @submit.prevent="store">
+                            <div>
+                                <TextInput
+                                    id="body"
+                                    type="text"
+                                    class="mt-1 block w-full mb-2 w-full rounded-lg border border-gray-400"
+                                    placeholder="Message..."
+                                    v-model="body"
+                                    autocomplete="off"
+                                    required
+                                    autofocus
+                                />
+                            </div>
 
-                                <div class="text-right">
-                                    <button
-                                        @click.prevent="store"
-                                        class="bg-blue-600 hover:bg-sky-500 text-white py-2 px-4 rounded-lg"
-                                        type="submit"
-                                    >
-                                        Send
-                                    </button>
-                                </div>
-                            </form>
-                        </div>
+                            <div class="text-right">
+                                <BaseButton>
+                                    Send
+                                </BaseButton>
+                            </div>
+                        </form>
                     </div>
 
                     <div v-if="messages.length > 0" class="mb-4">
@@ -43,10 +41,13 @@
 
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import MessageList from "@/Components/Message/MessageList.vue";
+import PrimaryButton from "@/Components/PrimaryButton.vue";
+import BaseButton from "@/Components/BaseButton.vue";
+import TextInput from "@/Components/TextInput.vue";
 
 export default {
     name: "Messages",
-    components: {MessageList, AuthenticatedLayout},
+    components: {TextInput, BaseButton, PrimaryButton, MessageList, AuthenticatedLayout},
 
     props: {
         messages: {
