@@ -41,13 +41,12 @@
 
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import MessageList from "@/Components/Message/MessageList.vue";
-import PrimaryButton from "@/Components/PrimaryButton.vue";
 import BaseButton from "@/Components/BaseButton.vue";
 import TextInput from "@/Components/TextInput.vue";
 
 export default {
     name: "Messages",
-    components: {TextInput, BaseButton, PrimaryButton, MessageList, AuthenticatedLayout},
+    components: {TextInput, BaseButton, MessageList, AuthenticatedLayout},
 
     props: {
         messages: {
